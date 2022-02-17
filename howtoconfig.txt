@@ -1,0 +1,101 @@
+# Basic configuration
+Desktop Settings > Icons > Icon type: none
+Window Manager Tweaks > Cycling > Draw frame around selected window while cycling: uncheck
+Window Manager Tweaks > Placement > At center of screen: check
+Window Manager Tweaks > Compositor > Show shadows under dock windows: uncheck
+
+# Thunar
+sudo pacman -S xarchiver
+Put home folders shortcut on thunar sidebar
+
+# Wallpapers, theme, icons and fonts
+stow wallpapers 
+theme
+  git clone https://github.com/vinceliuice/WhiteSur-gtk-theme.git
+  cd WhiteSur-gtk-theme
+  ./install -c dark -c light (if you want light version) -d ~/.local/share/themes
+  Appearance > style > WhiteSur-<dark or light>
+icons 
+  git clone https://github.com/vinceliuice/WhiteSur-icon-theme.git
+  cd WhiteSur-icon-theme
+  ./install -d ~/.local/share/icons
+  Appearance > Icons > Whitesur-<dark or light>
+fonts
+  stow fonts
+  stow fontconfig
+  Appearance > fonts:
+    default: SanFrancisco Display Regular 10
+    default monospace: Iosevka Term  Regular
+
+# Global Menu
+sudo pacman -S gobject-introspection
+yay -S vala-panel-appmenu-common-git vala-panel-appmenu-registrar-git vala-panel-appmenu-xfce-git 
+sudo pacman -S appmenu-gtk-module or yay -S appmenu-gtk-module-git
+Execute this command after enable vala-appmenu: 
+xfconf-query -c xsettings -p /Gtk/ShellShowsMenubar -n -t bool -s true 
+xfconf-query -c xsettings -p /Gtk/ShellShowsAppmenu -n -t bool -s true
+
+# Xfce Panel
+stow applications
+stow xpple-menu
+stow logo
+Right-click on panel > Panel Preferences > Items (add e config):
+  separator transparent not expand
+  applications menu > stay check only show icons in menu, choose any arch icon and use custom menufile and select xpple.menu
+  separator transparent not expand
+  app menu plugin > check use bold application name
+  weather update > Scrollbox > add Temperature (T), Humidity (H), Wind speed - Beaufort scale (WB), Apparent Temperature (A)
+  keyboard layouts > show layout as text, layout name language, widget size 50, manage layout globally
+  status tray plugin
+  pulseaudio plugin
+  powermanager plugin
+  notification plugin
+  separator transparent not expand
+  clock
+  action buttons > appearance action buttons > actions check only log out...
+  separator transparent not expand
+
+# Plank
+sudo pacman -S plank
+put plank on startup applications
+stow plank
+
+# Rofi
+sudo pacman -S rofi
+stow rofi
+
+# Ulauncher
+yay -S ulauncher
+stow ulauncher
+color theme  arc-dark
+put on startup this command: env GDK_BACKEND=x11 /usr/bin/ulauncher --hide-window --hide-window --hide-window
+
+# LightDM-Webkit2-Greeter
+sudo pacman -S lightdm-webkit2-greeter
+cd /tmp && git clone https://github.com/manilarome/lightdm-webkit2-theme-glorious.git
+sudo cp -r lightdm-webkit2-theme-glorious /usr/share/lightdm-webkit/themes/glorious
+sudo chmod -R 755 /usr/share/lightdm-webkit/themes/glorious
+sudo vim /etc/lightdm/lightdm.conf
+Change these line:
+greeter-session = lightdm-webkit2-greeter
+sudo vim /etc/lightdm/lightdm-webkit2-greeter.conf
+Change or add these lines:
+debug_mode=true
+webkit_theme=glorious # antergos
+sudo cp -r Pictures/wallpapers /usr/share/backgrounds
+
+# Picom
+yay -S picom-ibhagwan-git
+stow picom
+put picom on startup
+
+# Firefox
+git clone https://github.com/vinceliuice/WhiteSur-gtk-theme
+cd WhiteSur-gtk-theme
+./tweaks.sh -f
+Close Firefox
+Go to customize toolbar > disable title bar and put new tab icon (+) at side of address bar
+
+# Kitty
+pacman -S kitty
+stow kitty
