@@ -44,8 +44,8 @@ Right-click on panel > Panel Preferences > Items (add e config):
   applications menu > stay check only show icons in menu, choose any arch icon and use custom menufile and select xpple.menu
   separator transparent not expand
   app menu plugin > check use bold application name
-  weather update > Scrollbox > add Temperature (T), Humidity (H), Wind speed - Beaufort scale (WB), Apparent Temperature (A)
-  keyboard layouts > show layout as text, layout name language, widget size 50, manage layout globally
+  weather update > Scrollbox > add Temperature (T), Humidity (H), Wind speed - Beaufort scale (WB), Apparent Temperature (A), font SanFrancisco Regular 9
+  keyboard layouts > show layout as text, layout name language, widget size 55, manage layout globally
   status tray plugin
   pulseaudio plugin
   powermanager plugin
